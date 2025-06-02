@@ -42,7 +42,7 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
             $data['theme_websky_default_status'] = '';
         }
         $data['user_token'] = $this->session->data['user_token'];
-        	$data['current_version'] = "1.0.4";
+        	$data['current_version'] = "1.0.5";
 		$data['upgrade'] = false;
 
 	  $url = 'https://opencart-ir.com/version/index.php?route=extension/websky_lastversion/module/websky_lastversion';
