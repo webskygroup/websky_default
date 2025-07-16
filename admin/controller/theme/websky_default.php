@@ -42,7 +42,7 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
             $data['theme_websky_default_status'] = '';
         }
         $data['user_token'] = $this->session->data['user_token'];
-        	$data['current_version'] = "1.0.4";
+        	$data['current_version'] = "1.1.0";
 		$data['upgrade'] = false;
 
 	  $url = 'https://opencart-ir.com/version/index.php?route=extension/websky_lastversion/module/websky_lastversion';
@@ -66,7 +66,7 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
         $response_info=json_decode($json, true);
 		if ($response_info) {
 			$data['latest_version'] = $response_info['version_ext'];
-			$data['date_added'] =jdate($this->config->get('language_traditional_persian_shamsidate_format'), strtotime($response_info["date_added"]));
+			$data['date_added'] =($this->language->get('code') == 'fa') ? jdate($this->config->get('language_traditional_persian_shamsidate_format'), strtotime($response_info["date_added"])) : $response_info["date_added"];
 			if (!version_compare($data['current_version'], $response_info['version_ext'], '>=')) {
 				$data['upgrade'] = true;
 			}

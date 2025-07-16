@@ -15,24 +15,20 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
          }
         if ($this->config->get('theme_websky_default_status') and $this->config->get('config_theme')=='websky_default') {
             
-            $this->event->register('view/*/before', new \Opencart\System\Engine\Action('extension/websky_default/startup/websky_default'.WEBSKY_ROUTE_SEPARATOR.'event'));
+        $this->event->register('view/common/header/before', new \Opencart\System\Engine\Action('extension/websky_default/startup/websky_default' . WEBSKY_ROUTE_SEPARATOR . 'view_common_header'));
+
         }
+    }
+   
+    public function view_common_header(string &$route, array &$args): void
+    {
+  
+        if ($this->language->get('direction') == 'rtl') {
+            $args["bootstrap"] = "extension/websky_default/catalog/view/stylesheet/bootstrap.rtl.min.css";
+            $args["stylesheet"] = "extension/websky_default/catalog/view/stylesheet/stylesheet.css";
+          }
     }
 
-    public function event(string &$route, array &$args, mixed &$output): void
-    {
-       
-        $override = [
-            
-            'common/header',
-             
-        ];
-       
-        if (in_array($route, $override)) {
-           
-            $route = 'extension/websky_default/' . $route;
-        }
-    }
 
    
 }
