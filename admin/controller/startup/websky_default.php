@@ -25,17 +25,10 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
     public function view_common_header(string &$route, array &$args): void
     {
 
-        
+        //print_r($args);
         if ($this->language->get('direction') == 'rtl') {
             $args["bootstrap"] = "../extension/websky_default/admin/view/stylesheet/bootstrap.rtl.min.css";
             $args["stylesheet"] = "../extension/websky_default/admin/view/stylesheet/stylesheet-rtl.css";
-           /*  if($args['lang']=='fa'){
-            $args['styles'][0]['href'] = '../extension/websky_default/admin/view/stylesheet/font.css';
-            $args['styles'][0]['rel'] = 'stylesheet';
-            $args['styles'][0]['media'] = 'screen';
-             }*/
-            // $args['icons'] = '../extension/websky_default/admin/view/stylesheet/fonts/fontawesome/css/all-rtl.min.css';
-            //  $args['scripts']['href'] = '../extension/websky_default/admin/view/javascript/jquery/datetimepicker/persian-date.min.js';
 
         }
          //print_r($args);
