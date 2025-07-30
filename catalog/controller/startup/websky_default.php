@@ -25,7 +25,7 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
   
         if ($this->language->get('direction') == 'rtl') {
             $args["bootstrap"] = "extension/websky_default/catalog/view/stylesheet/bootstrap.rtl.min.css";
-            $args["stylesheet"] = "extension/websky_default/catalog/view/stylesheet/stylesheet.css";
+            $args["stylesheet"] = "extension/websky_default/catalog/view/stylesheet/stylesheet".VERSION.".css";
           }
     }
 
