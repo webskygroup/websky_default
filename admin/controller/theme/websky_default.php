@@ -42,7 +42,7 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
             $data['theme_websky_default_status'] = '';
         }
         $data['user_token'] = $this->session->data['user_token'];
-        	$data['current_version'] = "1.1.0";
+            $data['current_version'] = "1.1.1";
 		$data['upgrade'] = false;
 
 	  $url = 'https://opencart-ir.com/version/index.php?route=extension/websky_lastversion/module/websky_lastversion';
@@ -55,11 +55,13 @@ class WebskyDefault extends \Opencart\System\Engine\Controller
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $feilds);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         // Execute post
         $json = curl_exec($ch);
      //   print_r($json);
-        if ($json === FALSE) {
-            die('Curl failed: ' . curl_error($ch));
+        if ($json === false) {
+            $json = '';
         }
         // Close connection
         curl_close($ch);
